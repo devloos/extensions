@@ -8,16 +8,23 @@ type TrackListItemProps = {
   album?: SimplifiedAlbumObject;
   showGoToAlbum?: boolean;
   playingContext?: string;
+  tracksToQueue?: SimplifiedTrackObject[];
 };
 
-export default function TrackListItem({ track, album, showGoToAlbum, playingContext }: TrackListItemProps) {
+export default function TrackListItem({
+  track,
+  album,
+  showGoToAlbum,
+  playingContext,
+  tracksToQueue,
+}: TrackListItemProps) {
   const title = track.name || "";
   const subtitle = track?.artists?.map((a) => a.name).join(", ");
 
   let icon: Image.ImageLike | undefined = undefined;
   if (album?.images) {
     icon = {
-      source: album.images[album.images.length - 1].url,
+      source: album.images[album.images.length - 1]?.url,
     };
   }
 
@@ -34,6 +41,7 @@ export default function TrackListItem({ track, album, showGoToAlbum, playingCont
           album={album}
           showGoToAlbum={showGoToAlbum}
           playingContext={playingContext}
+          tracksToQueue={tracksToQueue}
         />
       }
     />

@@ -35,6 +35,7 @@ const cases = [
   "Path Case",
   "Random Case",
   "Sentence Case",
+  "Slug Case",
   "Snake Case",
   "Swap Case",
   "Title Case",
@@ -118,6 +119,7 @@ export default function Command() {
     "Path Case": changeCase.pathCase,
     "Random Case": changeCase.spongeCase,
     "Sentence Case": changeCase.sentenceCase,
+    "Slug Case": changeCase.paramCase,
     "Snake Case": changeCase.snakeCase,
     "Swap Case": changeCase.swapCase,
     "Title Case": changeCase.titleCase,
@@ -211,6 +213,7 @@ export default function Command() {
       <List.Item
         id={props.case}
         title={props.case}
+        accessories={[{ text: props.modified }]}
         detail={<List.Item.Detail markdown={props.modified} />}
         actions={
           <ActionPanel>
